@@ -1,12 +1,22 @@
 import tkinter as tk
 
 
-def create_gui(words):
+def create_checkbox_list(words, window_name):
     root = tk.Tk()
+    root.title(window_name)
 
     keywords = []
 
     max_col = 5
+    checked_words = []
+
+    def get_checked():
+
+        for i, var in enumerate(keywords):
+            if var.get():
+                checked_words.append(words[i])
+        root.destroy()
+        return checked_words
 
     for i, word in enumerate(words):
         var = tk.IntVar()
@@ -22,16 +32,17 @@ def create_gui(words):
             word.set(not word.get())
 
     invert_cb = tk.Checkbutton(root, text="Invert", command=invert)
-    invert_cb.grid(columnspan=max_col, pady=30)
+    invert_cb.grid(columnspan=max_col, pady=40)
 
-    submit_button = tk.Button(root, text="Submit", )
-    submit_button.grid(row=i + 3, column=0, columnspan=len(words), pady=10)
+    submit_btn = tk.Button(root, text="Submit", command=get_checked)
+    submit_btn.grid(columnspan=max_col,pady=30)
 
     root.mainloop()
+    return checked_words
 
 
 example_words = ["cat", "dog", "bird", "fish", "cow", "horse", "pig", "sheep", "goat",
                  "cat", "dog", "bird", "big-sword-fish", "cow", "horse", "pig-vey-clever-animal", "sheep", "goat"]
 
 if __name__ == "__main__":
-    create_gui(example_words)
+    print(create_checkbox_list(example_words, 'Keywords'))
