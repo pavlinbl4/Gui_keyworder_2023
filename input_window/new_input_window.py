@@ -1,3 +1,5 @@
+"""only input window"""
+
 import tkinter as tk
 
 result = []
