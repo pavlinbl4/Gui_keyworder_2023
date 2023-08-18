@@ -12,9 +12,9 @@ def create_checkbox_list(words, window_name):
 
     def get_checked():
 
-        for i, var in enumerate(keywords):
-            if var.get():
-                checked_words.append(words[i])
+        for x, keyword in enumerate(keywords):
+            if keyword.get():
+                checked_words.append(words[x])
         root.destroy()
         return checked_words
 
@@ -28,21 +28,20 @@ def create_checkbox_list(words, window_name):
         cb.grid(row=row, column=col, sticky="w", padx=20, pady=15)
 
     def invert():
-        for word in keywords:
-            word.set(not word.get())
+        for kword in keywords:
+            kword.set(not kword.get())
 
     invert_cb = tk.Checkbutton(root, text="Invert", command=invert)
     invert_cb.grid(columnspan=max_col, pady=40)
 
     submit_btn = tk.Button(root, text="Submit", command=get_checked)
-    submit_btn.grid(columnspan=max_col,pady=30)
+    submit_btn.grid(columnspan=max_col, pady=30)
 
     root.mainloop()
     return checked_words
 
 
-example_words = ["cat", "dog", "bird", "fish", "cow", "horse", "pig", "sheep", "goat",
-                 "cat", "dog", "bird", "big-sword-fish", "cow", "horse", "pig-vey-clever-animal", "sheep", "goat"]
-
 if __name__ == "__main__":
+    example_words = ["cat", "dog", "bird", "fish", "cow", "horse", "pig", "sheep", "goat",
+                     "cat", "dog", "bird", "big-sword-fish", "cow", "horse", "pig-vey-clever-animal", "sheep", "goat"]
     print(create_checkbox_list(example_words, 'Keywords'))
