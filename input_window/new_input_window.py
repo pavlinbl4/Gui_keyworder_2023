@@ -57,9 +57,11 @@ def create_input_window():
     good_keywords_lst = good_keywords_str.split(', ')
 
     selected_keywords = create_checkbox_list(good_keywords_lst, "Select_keywords")
-    pyperclip.copy(selected_keywords)
+    # pyperclip.copy(selected_keywords)
+    rezult_str = ", ".join(selected_keywords)
+    pyperclip.copy(rezult_str)
 
-    return selected_keywords
+    return rezult_str
 
 
 if __name__ == "__main__":
