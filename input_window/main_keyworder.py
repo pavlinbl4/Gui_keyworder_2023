@@ -1,3 +1,5 @@
+import sys
+
 import pyperclip
 
 from input_window.best_keywords import keywords_opimization
@@ -7,6 +9,10 @@ from input_window.new_input_window import create_input_window
 
 def main():
     result = create_input_window("Enter text here")
+
+    if result == []:
+        quit()
+
     good_keywords_str = keywords_opimization(", ".join(result))
     good_keywords_lst = good_keywords_str.split(', ')
 
