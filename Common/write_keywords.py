@@ -14,4 +14,3 @@ def write_keywords(final, file_path: str):
 
 if __name__ == '__main__':
     write_keywords("one, two, tree", '/Volumes/big4photo/Documents/Kommersantttt/text.txt')
-
