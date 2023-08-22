@@ -1,7 +1,8 @@
 import tkinter as tk
 
 
-def create_checkbox_list(words, window_name):
+# gui window to select items from list
+def create_checkbox_list(words: list, window_name: str) -> list:
     root = tk.Tk()
     root.title(window_name)
 
