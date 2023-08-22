@@ -1,18 +1,15 @@
 """only input window"""
 
 import tkinter as tk
-from input_window.best_keywords import keywords_opimization
-from input_window.checkbox_output import create_checkbox_list
-import pyperclip
 
-result = []
+result_list = []
 
 
-def create_input_window():
+def create_input_window(window_name) -> list:
     def confirm_input(event=None):
         # get text input
         text = input_field.get("1.0", 'end-1c')
-        result.append(text)
+        result_list.append(text)
         window.destroy()
 
     def cancel_input():
@@ -20,6 +17,7 @@ def create_input_window():
 
     # Create window
     window = tk.Tk()
+    window.title(window_name)
 
     # Set the height of the window to 100 pixels
     window_width = 570
@@ -53,15 +51,7 @@ def create_input_window():
 
     window.mainloop()
 
-    good_keywords_str = keywords_opimization(", ".join(result))
-    good_keywords_lst = good_keywords_str.split(', ')
-
-    selected_keywords = create_checkbox_list(good_keywords_lst, "Select_keywords")
-    # pyperclip.copy(selected_keywords)
-    rezult_str = ", ".join(selected_keywords)
-    pyperclip.copy(rezult_str)
-
-    return rezult_str
+    return result_list
 
 
 if __name__ == "__main__":
