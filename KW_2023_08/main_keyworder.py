@@ -1,19 +1,17 @@
-import sys
-
 import pyperclip
 
-from input_window.best_keywords import keywords_opimization
-from input_window.checkbox_output import create_checkbox_list
-from input_window.new_input_window import create_input_window
+from KW_2023_08.best_keywords import keywords_optimization
+from KW_2023_08.checkbox_output import create_checkbox_list
+from KW_2023_08.new_input_window import create_input_window
 
 
-def main():
+def main() -> str:
     result = create_input_window("Enter text here")
 
     if result == []:
         quit()
 
-    good_keywords_str = keywords_opimization(", ".join(result))
+    good_keywords_str = keywords_optimization(", ".join(result))
     good_keywords_lst = good_keywords_str.split(', ')
 
     selected_keywords = create_checkbox_list(good_keywords_lst, "Select_keywords")
