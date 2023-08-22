@@ -6,7 +6,7 @@ result_list = []
 
 
 def create_input_window(window_name) -> list:
-    def confirm_input(event=None):
+    def confirm_input():
         # get text input
         text = input_field.get("1.0", 'end-1c')
         result_list.append(text)
@@ -55,4 +55,4 @@ def create_input_window(window_name) -> list:
 
 
 if __name__ == "__main__":
-    print(create_input_window())
+    print(create_input_window("This is window name"))
