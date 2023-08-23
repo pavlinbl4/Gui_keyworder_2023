@@ -5,11 +5,12 @@ this function add word from clip memory to the file with "bad" words
 import pyperclip
 from pathlib import Path
 import os
+
+from Common.confirm_word import confirmation_window
+from Common.notific import notification
 from keyworder.check_file_exist import create_file_if_no
 
 from colorama import Fore
-from confirm_window.confirm_word import confirmation_window
-from keyworder.notific import notification
 
 
 def bad_words_from_file(file_path):

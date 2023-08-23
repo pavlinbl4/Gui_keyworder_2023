@@ -1,5 +1,5 @@
 import re
-from KW_2023_08.bad_words_from_file import get_bad_words_from_txt_file
+from KW_2023_08.bad_words_job import get_bad_words_from_txt_file
 
 # keyword optimization with using "bad words" from the text file
 def keywords_optimization(string, path_to_bad_words_file='/Users/evgeniy/Documents/keywords/bad_words.txt'):
@@ -24,3 +24,7 @@ def keywords_optimization(string, path_to_bad_words_file='/Users/evgeniy/Documen
         result = ', '.join(words)
 
     return result
+
+
+if __name__ == '__main__':
+    print(keywords_optimization('комбинат, агропромышленный, холдинг, 222, холдинг !! ;'))
