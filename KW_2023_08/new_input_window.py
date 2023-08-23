@@ -35,9 +35,16 @@ def create_input_window(window_name) -> list:
     input_field = tk.Text(window)
     input_field.grid(row=0, column=0)
 
-
     # check button to torn on lematization
-    cb = tk.Checkbutton(window, text="Check for text lemmatization", variable=False)
+
+    def checkbutton_changed():
+        if enabled.get() == 1:
+            print('turned on')
+        else:
+            print('turned off')
+
+    enabled = tk.IntVar()
+    cb = tk.Checkbutton(window, text="Check for text lemmatization", variable=enabled)
     cb.grid(row=1, column=0, sticky="w", padx=150, pady=15)
 
     # Bind paste keyboard shortcut
@@ -51,7 +58,7 @@ def create_input_window(window_name) -> list:
     paste_btn.grid(row=2, column=0)
 
     # Other buttons
-    tk.Button(window, text="Submit", command=confirm_input).grid(row=3, column=0)
+    tk.Button(window, text="Submit", command=lambda: [confirm_input(), checkbutton_changed()]).grid(row=3, column=0)
     tk.Button(window, text="Cancel", command=cancel_input).grid(row=4, column=0)
 
     window.mainloop()
