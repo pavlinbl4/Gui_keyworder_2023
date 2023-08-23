@@ -5,7 +5,7 @@ import tkinter as tk
 result_list = []
 
 
-def create_input_window(window_name) -> list:
+def create_input_window(window_name) -> tuple:
     def confirm_input():
         # get text input
         text = input_field.get("1.0", 'end-1c')
@@ -37,14 +37,17 @@ def create_input_window(window_name) -> list:
 
     # check button to torn on lematization
 
-    def checkbutton_changed():
-        if enabled.get() == 1:
-            print('turned on')
-        else:
-            print('turned off')
 
-    enabled = tk.IntVar()
-    cb = tk.Checkbutton(window, text="Check for text lemmatization", variable=enabled)
+    def checkbutton_changed():
+        if cbutton_rez.get() == 1:
+            return 1
+        else:
+            return 0
+
+
+
+    cbutton_rez = tk.IntVar()
+    cb = tk.Checkbutton(window, text="Check for text lemmatization", variable=cbutton_rez)
     cb.grid(row=1, column=0, sticky="w", padx=150, pady=15)
 
     # Bind paste keyboard shortcut
@@ -63,7 +66,9 @@ def create_input_window(window_name) -> list:
 
     window.mainloop()
 
-    return result_list
+    lemma_switch = checkbutton_changed()
+
+    return result_list, lemma_switch
 
 
 if __name__ == "__main__":
