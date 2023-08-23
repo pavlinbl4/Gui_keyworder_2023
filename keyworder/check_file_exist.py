@@ -25,10 +25,10 @@ def create_file_if_no(subfolder_name: str, file_name: str) -> str:
         raise ValueError("file_name cannot be empty")
 
     # Additional validation
-    if "/" in subfolder_name:
-        raise ValueError("subfolder_name cannot contain slashes")
-    if "/" in file_name:
-        raise ValueError("file_name cannot contain slashes")
+    # if "/" in subfolder_name:
+    #     raise ValueError("subfolder_name cannot contain slashes")
+    # if "/" in file_name:
+    #     raise ValueError("file_name cannot contain slashes")
 
     path_to_folder = make_documents_subfolder(subfolder_name)
 
