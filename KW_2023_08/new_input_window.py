@@ -21,7 +21,7 @@ def create_input_window(window_name) -> list:
 
     # Set the height of the window to 100 pixels
     window_width = 570
-    window_height = 440
+    window_height = 500
     screen_width = window.winfo_screenwidth()
     screen_height = window.winfo_screenheight()
     x = int(screen_width / 4)
@@ -35,6 +35,11 @@ def create_input_window(window_name) -> list:
     input_field = tk.Text(window)
     input_field.grid(row=0, column=0)
 
+
+    # check button to torn on lematization
+    cb = tk.Checkbutton(window, text="Check for text lemmatization", variable=False)
+    cb.grid(row=1, column=0, sticky="w", padx=150, pady=15)
+
     # Bind paste keyboard shortcut
     input_field.bind('<Control-v>', lambda e: input_field.event_generate('<<Paste>>'))
 
@@ -43,11 +48,11 @@ def create_input_window(window_name) -> list:
 
     # Paste button
     paste_btn = tk.Button(window, text="Paste", command=lambda: input_field.event_generate('<<Paste>>'))
-    paste_btn.grid(row=1, column=0)
+    paste_btn.grid(row=2, column=0)
 
     # Other buttons
-    tk.Button(window, text="Submit", command=confirm_input).grid(row=2, column=0)
-    tk.Button(window, text="Cancel", command=cancel_input).grid(row=3, column=0)
+    tk.Button(window, text="Submit", command=confirm_input).grid(row=3, column=0)
+    tk.Button(window, text="Cancel", command=cancel_input).grid(row=4, column=0)
 
     window.mainloop()
 
