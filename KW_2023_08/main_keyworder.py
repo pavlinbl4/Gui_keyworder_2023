@@ -6,17 +6,28 @@ from KW_2023_08.bad_words_job import add_bad_words_from_list
 from KW_2023_08.best_keywords import keywords_optimization
 from KW_2023_08.checkbox_output import create_checkbox_list
 from KW_2023_08.new_input_window import create_input_window
+from keyworder.lematization import lema
 
 
 def main() -> str:
-    result = create_input_window("Enter text here")  # get text from GUI window
+    data_from_gui = create_input_window("Enter text here")  # get text from GUI window
+
+    result = data_from_gui[0]
+    lemma_switch = data_from_gui[1]
 
     # if window was closed - stop program
     if result == []:
         quit()
 
+
+
     # keywords optimisation
     good_keywords_str = keywords_optimization(", ".join(result))
+
+    # turn lemmatization
+    if lemma_switch == 1:
+        result = lema(good_keywords_str)
+
     good_keywords_lst = good_keywords_str.split(', ')
 
     # select keyword that you want via GUI and convert them to  the string
@@ -37,7 +48,6 @@ def main() -> str:
 
     #  save "bad words"  to file
     add_bad_words_from_list(bad_words_list, '/Users/evgeniy/Documents/keywords/bad_words.txt')
-
 
     print(f'{rezult_str = }')
 
