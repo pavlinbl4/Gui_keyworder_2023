@@ -1,23 +1,45 @@
 import pyperclip
 
+from Common.lists_difference import list_dif
+from Common.write_keywords import write_keywords
+from KW_2023_08.bad_words_job import add_bad_words_from_list
 from KW_2023_08.best_keywords import keywords_optimization
 from KW_2023_08.checkbox_output import create_checkbox_list
 from KW_2023_08.new_input_window import create_input_window
 
 
 def main() -> str:
-    result = create_input_window("Enter text here")
+    result = create_input_window("Enter text here")  # get text from GUI window
 
+    # if window was closed - stop program
     if result == []:
         quit()
 
+    # keywords optimisation
     good_keywords_str = keywords_optimization(", ".join(result))
     good_keywords_lst = good_keywords_str.split(', ')
 
-    selected_keywords = create_checkbox_list(good_keywords_lst, "Select_keywords")
-    rezult_str = ", ".join(selected_keywords)
+    # select keyword that you want via GUI and convert them to  the string
+    selected_keywords_list = create_checkbox_list(good_keywords_lst, "Select_keywords")
+    rezult_str = ", ".join(selected_keywords_list)
+
+    # copy keywords to clip
     pyperclip.copy(rezult_str)
-    print(rezult_str)
+
+    # write keywords to txt file
+    write_keywords(rezult_str, '/Users/evgeniy/Documents/keywords/keywords in work.txt')
+
+    # find "bad word" in unused keywords
+    unused_keywords_list = list_dif(good_keywords_lst, selected_keywords_list)
+    bad_words_list = create_checkbox_list(unused_keywords_list, 'Select "BAD WORDS"')
+
+    print(f'{bad_words_list = }')
+
+    #  save "bad words"  to file
+    add_bad_words_from_list(bad_words_list, '/Users/evgeniy/Documents/keywords/bad_words.txt')
+
+
+    print(f'{rezult_str = }')
 
     return rezult_str
 
