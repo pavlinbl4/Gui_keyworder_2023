@@ -1,0 +1,6 @@
+common~=0.1.2
+pyperclip~=1.8.2
+setuptools~=65.5.1
+ruwordnet~=0.0.6
+colorama~=0.4.6
+pymystem3~=0.2.0
