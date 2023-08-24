@@ -1,7 +1,7 @@
 import pyperclip
 from pymystem3 import Mystem
 
-from Common.write_keywords import write_keywords
+from KW_2023_08.write_keywords import write_keywords
 from KW_2023_08.best_keywords import keywords_optimization
 from KW_2023_08.checkbox_output import create_checkbox_list
 from KW_2023_08.new_input_window import create_input_window
