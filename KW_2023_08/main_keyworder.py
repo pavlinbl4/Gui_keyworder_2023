@@ -1,12 +1,12 @@
 import pyperclip
 
-from Common.lists_difference import list_dif
-from Common.write_keywords import write_keywords
+from KW_2023_08.lematization import lema
+from KW_2023_08.lists_difference import list_dif
+from KW_2023_08.write_keywords import write_keywords
 from KW_2023_08.bad_words_job import add_bad_words_from_list
 from KW_2023_08.best_keywords import keywords_optimization
 from KW_2023_08.checkbox_output import create_checkbox_list
 from KW_2023_08.new_input_window import create_input_window
-from keyworder.lematization import lema
 
 
 def main() -> str:
