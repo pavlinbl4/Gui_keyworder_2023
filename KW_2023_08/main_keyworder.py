@@ -19,15 +19,16 @@ def main() -> str:
     if result == []:
         quit()
 
-
-
-    # keywords optimisation
-    good_keywords_str = keywords_optimization(", ".join(result))
-
     # turn lemmatization
     if lemma_switch == 1:
-        result = lema(good_keywords_str)
+        lema_result_lst = lema(result[0])
+        lema_result_str = ','.join(lema_result_lst)
+        good_keywords_str = keywords_optimization(lema_result_str)
+    else:
+        # keywords optimisation
+        good_keywords_str = keywords_optimization(", ".join(result))
 
+    # convert to list
     good_keywords_lst = good_keywords_str.split(', ')
 
     # select keyword that you want via GUI and convert them to  the string
