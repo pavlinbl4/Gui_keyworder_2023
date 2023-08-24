@@ -1,6 +1,7 @@
 import re
 from KW_2023_08.bad_words_job import get_bad_words_from_txt_file
 
+
 # keyword optimization with using "bad words" from the text file
 def keywords_optimization(string, path_to_bad_words_file='/Users/evgeniy/Documents/keywords/bad_words.txt'):
     words_to_remove = get_bad_words_from_txt_file(path_to_bad_words_file)
