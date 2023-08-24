@@ -16,7 +16,7 @@ def main() -> str:
     lemma_switch = data_from_gui[1]
 
     # if window was closed - stop program
-    if result == []:
+    if not result:
         quit()
 
     # turn lemmatization
